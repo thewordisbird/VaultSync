@@ -27,7 +27,7 @@ export function exponentialBackoff<I, R, S>(args: {
 					return result as S;
 				}
 			} catch (e) {
-				// TODO: Error handling
+				// TODO: Error handling (Probaby let error bubble up)
 				console.error(e);
 			} finally {
 				attempts++;
