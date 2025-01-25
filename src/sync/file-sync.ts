@@ -450,8 +450,11 @@ export class FileSync {
 
 			if (result.type == "file") {
 				const clientFile = items.find(
-					(item) => item.folderOrFile.path == result.path,
+					(item) =>
+						item.folderOrFile.name.toLowerCase() ==
+						result.name.toLowerCase(),
 				);
+
 				if (!clientFile) continue;
 
 				const sanitizedFromPath = sanitizeRemotePath({
@@ -579,6 +582,7 @@ export class FileSync {
 
 		let clientFileMetadata: FileSyncMetadata | undefined =
 			args.clientFileMetadata;
+
 		if (args.clientFile) {
 			const sanitizedRemotePath = sanitizeRemotePath({
 				vaultRoot: this.settings.providerPath!,
@@ -586,7 +590,9 @@ export class FileSync {
 			});
 			clientFileMetadata = this.fileMap.get(sanitizedRemotePath);
 		}
+
 		if (clientFileMetadata == undefined) return;
+
 		let clientFile = this.obsidianApp.vault.getFileByPath(
 			clientFileMetadata.path,
 		);
