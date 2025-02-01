@@ -1,6 +1,6 @@
 import { App, Setting, PluginSettingTab } from "obsidian";
 import { PubSub } from "../../lib/pubsub";
-import VaultLink from "./main";
+import VaultSync from "./main";
 import { SelectVaultModal } from "./modal";
 import { getProvider, ProviderName } from "../providers/provider";
 import { Provider } from "src/providers/types";
@@ -25,7 +25,7 @@ export const DEFAULT_SETTINGS: Partial<PluginSettings> = {
 };
 
 export class SettingsTab extends PluginSettingTab {
-	private plugin: VaultLink;
+	private plugin: VaultSync;
 	private status: Status;
 	private providerName: ProviderName | undefined;
 	private pubsub: PubSub;
@@ -34,7 +34,7 @@ export class SettingsTab extends PluginSettingTab {
 	// instances will satisfy?
 	private provider: Provider | undefined;
 
-	constructor(app: App, plugin: VaultLink) {
+	constructor(app: App, plugin: VaultSync) {
 		super(app, plugin);
 
 		this.plugin = plugin;
@@ -99,13 +99,13 @@ export class SettingsTab extends PluginSettingTab {
 		// sub divs for the different app states this ensures the
 		// next setting will be formatted correctly. DRY
 		new Setting(disconnectedEl)
-			.setName("VaultLink")
+			.setName("VaultSync")
 			.setDesc("Author: Justin Bird")
 			.addButton((button) => {
-				button.setButtonText("VaultLink on github");
+				button.setButtonText("VaultSync on github");
 				button.onClick(() => {
 					window.location.href =
-						"https://www.github.com/thewordisbird/VaultLink";
+						"https://www.github.com/thewordisbird/VaultSync";
 				});
 			})
 			.setHeading();
@@ -158,13 +158,13 @@ export class SettingsTab extends PluginSettingTab {
 		// sub divs for the different app states this ensures the
 		// next setting will be formatted correctly. DRY
 		new Setting(connectedEl)
-			.setName("VaultLink")
+			.setName("VaultSync")
 			.setDesc("Author: Justin Bird")
 			.addButton((button) => {
-				button.setButtonText("VaultLink on github");
+				button.setButtonText("VaultSync on github");
 				button.onClick(() => {
 					window.location.href =
-						"https://www.github.com/thewordisbird/VaultLink";
+						"https://www.github.com/thewordisbird/VaultSync";
 				});
 			})
 			.setHeading();

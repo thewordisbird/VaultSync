@@ -15,7 +15,7 @@ import type { PluginSettings } from "./settings";
 
 const LONGPOLL_FREQUENCY = 30000;
 
-export default class VaultLink extends Plugin {
+export default class VaultSync extends Plugin {
 	public settings: PluginSettings;
 	private fileSync: FileSync;
 	private longpollIntervalId: number | undefined;

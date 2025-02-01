@@ -1,5 +1,5 @@
 import { App, Modal } from "obsidian";
-import VaultLink from "./main";
+import VaultSync from "./main";
 import { PubSub } from "../../lib/pubsub";
 import { Provider, ProviderFolderResult } from "../providers/types";
 import { getProvider } from "../providers/provider";
@@ -7,7 +7,7 @@ import { ProviderPath, PubsubTopic } from "src/types";
 import { poroviderCreateFolderError, providerListFolderError } from "./notice";
 
 export class SelectVaultModal extends Modal {
-	plugin: VaultLink;
+	plugin: VaultSync;
 	pubsub: PubSub;
 	provider: Provider;
 	providerVaultPath: ProviderPath;
@@ -16,7 +16,7 @@ export class SelectVaultModal extends Modal {
 	resultsEl: HTMLElement;
 	controlsEl: HTMLElement;
 
-	constructor(app: App, plugin: VaultLink) {
+	constructor(app: App, plugin: VaultSync) {
 		super(app);
 		this.plugin = plugin;
 		this.pubsub = new PubSub();
