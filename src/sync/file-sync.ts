@@ -66,8 +66,8 @@ export class FileSync {
 				continue;
 			}
 
-			const fileHash = this.provider.createFileHash(
-				// @ts-ignore (typesript bug - not type narroring)
+			const fileHash = await this.provider.createFileHash(
+				// @ts-ignore
 				{ contents: fileContents[i].value },
 			);
 
@@ -92,22 +92,9 @@ export class FileSync {
 
 		const foldersAndFiles = this.obsidianApp.vault.getAllLoadedFiles();
 
-		// TODO: Sync empty folder
-		// const folders = foldersAndFiles
-		// 	.filter(
-		// 		(folderOrFile): folderOrFile is TFolder =>
-		// 			folderOrFile instanceof TFolder,
-		// 	)
-		// 	.map((folder) => {
-		// 		return sanitizeRemotePath({
-		// 			vaultRoot: this.settings.providerPath,
-		// 			filePath: folder.path,
-		// 		});
-		// 	});
-
 		const files = foldersAndFiles.filter(
 			(folderOrFile): folderOrFile is TFile => {
-				if (!(foldersAndFiles instanceof TFile)) return false;
+				if (!(folderOrFile instanceof TFile)) return false;
 
 				const providerPath = sanitizeRemotePath({
 					vaultRoot: this.settings.providerPath,
@@ -146,9 +133,6 @@ export class FileSync {
 				}, []),
 			);
 
-		// const { hasFailure: folderHasFailure } =
-		// 	await this.provider.processBatchCreateFolder({ paths: folders });
-
 		// TODO: Improve error messaging
 		if (fileHasFailure) {
 			providerSyncError();
@@ -166,7 +150,7 @@ export class FileSync {
 				recursive: true,
 			});
 
-		const result = await this.syncFiles({ folders, files, deleted });
+		await this.syncFiles({ folders, files, deleted });
 		this.cursor = cursor;
 	}
 

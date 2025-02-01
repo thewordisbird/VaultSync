@@ -1,11 +1,10 @@
 {
-	"id": "VaultSync",
+	"id": "vault-sync",
 	"name": "VaultSync",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "A plugin to link obsidian vault with cloud storage provider",
+	"minAppVersion": "1.7.7",
+	"description": "Sync vault with cloud storage provider.",
 	"author": "Justin Bird",
-	"authorUrl": "https://github.com/thewordisbird/VaultSync",
-	"fundingUrl": "",
+	"authorUrl": "https://thewordisbird.com",
 	"isDesktopOnly": false
 }

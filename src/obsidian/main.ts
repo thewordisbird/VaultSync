@@ -84,8 +84,6 @@ export default class VaultSync extends Plugin {
 			PubsubTopic.SET_VAULT_PATH,
 			async (args: { payload: string }) => {
 				const { payload } = args;
-
-				console.log("PAYLOAD:", payload);
 				const providerPath = payload as ProviderPath;
 				const providerPathDisplay = payload.slice(1) as ClientPath;
 

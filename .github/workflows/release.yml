@@ -17,11 +17,12 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: "18.x"
+                  cache: "yarn"
 
             - name: Build plugin
               run: |
-                  npm install
-                  npm run build
+                  yarn install
+                  yarn build
 
             - name: Create release
               env:
