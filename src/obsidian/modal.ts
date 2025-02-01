@@ -175,7 +175,6 @@ export class SelectVaultModal extends Modal {
 					span.setText(cur);
 
 					if (idx < arr.length - 1) {
-						console.log("Not Last Item");
 						span.addClass("breadcrumb-clickable");
 						span.onClickEvent(async () => {
 							this.onSelectResult(

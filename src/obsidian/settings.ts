@@ -73,7 +73,6 @@ export class SettingsTab extends PluginSettingTab {
 			(args: { payload: string }) => {
 				const { payload } = args;
 
-				console.log("SVP payload:", payload);
 				const vaultPathInput = document.getElementById(
 					"vault_path_input",
 				) as HTMLInputElement;
