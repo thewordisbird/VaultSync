@@ -6,6 +6,5 @@
 	"description": "Link Obsidian vault with cloud storage provider.",
 	"author": "Justin Bird",
 	"authorUrl": "https://github.com/thewordisbird/VaultSync",
-	"fundingUrl": "",
 	"isDesktopOnly": false
 }
