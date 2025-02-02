@@ -149,7 +149,7 @@ export class SelectVaultModal extends Modal {
 		function handleShowAddFolderForm() {
 			addFolderFormContainer.show();
 			addFolderBtn.hide();
-			this.renderControls(true);
+			this.renderControls(false);
 		}
 
 		function handleShowAddFolderBtn() {
