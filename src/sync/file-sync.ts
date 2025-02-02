@@ -66,8 +66,8 @@ export class FileSync {
 				continue;
 			}
 
-			const fileHash = this.provider.createFileHash(
-				// @ts-ignore (typesript bug - not type narroring)
+			const fileHash = await this.provider.createFileHash(
+				// @ts-ignore
 				{ contents: fileContents[i].value },
 			);
 

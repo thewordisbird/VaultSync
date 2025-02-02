@@ -635,8 +635,8 @@ export class DropboxProvider implements Provider {
 		});
 	}
 
-	public createFileHash(args: { contents: ArrayBuffer }): FileHash {
-		return dropboxContentHasher(args.contents) as FileHash;
+	public createFileHash(args: { contents: ArrayBuffer }): Promise<FileHash> {
+		return dropboxContentHasher(args.contents);
 	}
 
 	public async downloadFile(args: {

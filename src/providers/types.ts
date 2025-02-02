@@ -123,7 +123,7 @@ export interface Provider {
 		args: { path: ProviderPath; contents: ArrayBuffer }[],
 	): Promise<{ results: ProviderFileResult[]; hasFailure: boolean }>;
 
-	createFileHash: (args: { contents: ArrayBuffer }) => FileHash;
+	createFileHash: (args: { contents: ArrayBuffer }) => Promise<FileHash>;
 
 	downloadFile(args: { path: string }): Promise<ProviderFileContentsResult>;
 

@@ -1,3 +1,5 @@
+import { FileHash } from "./types";
+
 /*
  * Per Obsidian docs use SubtleCrypto to work on mobile:
  * https://docs.obsidian.md/Plugins/Releasing/Submission+requirements+for+plugins#Node.js+and+Electron+APIs+are+only+allowed+on+desktop
@@ -16,7 +18,7 @@ const BLOCK_SIZE = 4 * 1024 * 1024;
 export async function dropboxContentHasher(
 	data: ArrayBuffer,
 	blockSize = BLOCK_SIZE,
-) {
+): Promise<FileHash> {
 	const subtle = window.crypto.subtle;
 	const numChunks = Math.ceil(data.byteLength / blockSize);
 	const blockHashes = new Uint8Array(numChunks * 32);
@@ -38,5 +40,5 @@ export async function dropboxContentHasher(
 	const hashHex = Array.from(new Uint8Array(totalHash))
 		.map((byte) => byte.toString(16).padStart(2, "0"))
 		.join("");
-	return hashHex;
+	return hashHex as FileHash;
 }
