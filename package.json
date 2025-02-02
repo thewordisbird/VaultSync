@@ -1,6 +1,6 @@
 {
 	"name": "VaultSync",
-	"version": "1.0.0",
+	"version": "1.0.4",
 	"description": "A plugin to link obsidian vault with cloud storage provider",
 	"main": "main.js",
 	"type": "module",
@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"build": "tsc && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"test": "vitest"
 	},
