@@ -73,7 +73,6 @@ export class SettingsTab extends PluginSettingTab {
 			(args: { payload: string }) => {
 				const { payload } = args;
 
-				console.log("SVP payload:", payload);
 				const vaultPathInput = document.getElementById(
 					"vault_path_input",
 				) as HTMLInputElement;
@@ -173,7 +172,7 @@ export class SettingsTab extends PluginSettingTab {
 				`Provider: ${this.plugin.settings.providerName?.toUpperCase()}`,
 			)
 			.setDesc(
-				`You are connected to ${this.plugin.settings.providerName?.toUpperCase()} with the account ${this.provider?.email?.toUpperCase()}`,
+				`You are connected to ${this.plugin.settings.providerName?.toUpperCase()} with the account ${this.provider?.email?.toUpperCase()}.`,
 			)
 
 			.addButton((button) => {
@@ -192,7 +191,7 @@ export class SettingsTab extends PluginSettingTab {
 
 		new Setting(connectedEl)
 			.setName("Dropbox Vault Path")
-			.setDesc("Select a folder in your Dropbox to sync with Obsidian")
+			.setDesc("Select a folder in your Dropbox to sync with Obsidian.")
 			.addText((text) =>
 				text
 					.setValue(this.plugin.settings.providerPathDisplay || "")

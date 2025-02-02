@@ -23,7 +23,6 @@ export function exponentialBackoff<I, R, S>(args: {
 			try {
 				let result = await func(args);
 				if (checkFunc(result)) {
-					console.log("Exponential Backoff Result:", result);
 					return result as S;
 				}
 			} catch (e) {
