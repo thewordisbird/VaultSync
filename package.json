@@ -4,6 +4,9 @@
 	"description": "A plugin to link obsidian vault with cloud storage provider",
 	"main": "main.js",
 	"type": "module",
+	"engines": {
+		"node": ">=18.0.0"
+	},
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
