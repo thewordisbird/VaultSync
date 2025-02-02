@@ -3,6 +3,11 @@ An Obsidian plugin to link your vault to a cloud provider. Currently only suppor
 
 This plugin works on both desktop and mobile.
 
+## Disclosures
+This plugin interacts with dropbox via the [dropbox javascript sdk](https://github.com/dropbox/dropbox-sdk-js).
+Files from your connected provider account in the selected remote vault folder will be brought into you obsidian vault and will be editable and deletable.
+Files from your obsidian vault will be synced (copied) to your remote vault on your cloud provider
+
 ## Getting Started
 Install the plugin from [Obsidian Community Plugin](https://obsidian.md/plugins) or from within the Obsidian App.
 
@@ -36,4 +41,5 @@ When a new vault is selected the following rules are applied to the sync:
 - Provider and client files with the same name but different content hashes sync the file with the most recent modification timestamp
 - Provider files that do not exist on the client are downloaded and added to the client
 - Client files that do not exist on the provider are uploaded to the provider
+
 
