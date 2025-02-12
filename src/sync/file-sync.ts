@@ -550,7 +550,7 @@ export class FileSync {
 
 		if (!folderOrFile) return;
 
-		await this.obsidianApp.vault.delete(folderOrFile, true);
+		await this.obsidianApp.fileManager.trashFile(folderOrFile);
 		this.fileMap.delete(args.providerDeleted.path);
 	}
 
