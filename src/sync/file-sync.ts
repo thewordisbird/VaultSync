@@ -51,8 +51,9 @@ export class FileSync {
 		const clientFoldersOrFiles = this.obsidianApp.vault.getAllLoadedFiles();
 
 		const clientFiles = clientFoldersOrFiles.filter(
-			(folderOrFile) => folderOrFile instanceof TFile,
-		) as TFile[];
+			(folderOrFile): folderOrFile is TFile =>
+				folderOrFile instanceof TFile,
+		);
 
 		const fileContents = await Promise.allSettled(
 			clientFiles.map((clientFile) =>
@@ -354,7 +355,7 @@ export class FileSync {
 
 			for (let result of results) {
 				this.fileMap.set(result.path as ProviderPath, {
-					...(args.folderOrFile as TFile),
+					...args.folderOrFile,
 					remotePath: result.path,
 					rev: result.rev,
 					fileHash: result.fileHash,
@@ -401,12 +402,14 @@ export class FileSync {
 		}
 		for (let result of batchMoveFolderOrFileResults.results) {
 			if (result.type == "folder") {
-				const subFiles = items.filter((item) => {
-					return (
-						item.folderOrFile instanceof TFile &&
-						item.folderOrFile.parent?.name == result.name
-					);
-				});
+				const subFiles = items.filter(
+					(item): item is { folderOrFile: TFile; ctx: string } => {
+						return (
+							item.folderOrFile instanceof TFile &&
+							item.folderOrFile.parent?.name == result.name
+						);
+					},
+				);
 
 				subFiles.forEach((subFile) => {
 					const sanitizedFromPath = sanitizeRemotePath({
@@ -424,7 +427,7 @@ export class FileSync {
 						this.fileMap?.delete(sanitizedFromPath);
 
 					this.fileMap?.set(sanitizedToPath, {
-						...(subFile.folderOrFile as TFile),
+						...subFile.folderOrFile,
 						remotePath: sanitizedToPath,
 						rev: clientFileMetadata?.rev,
 						fileHash: clientFileMetadata?.fileHash,
@@ -439,7 +442,8 @@ export class FileSync {
 						result.name.toLowerCase(),
 				);
 
-				if (!clientFile) continue;
+				if (!(clientFile && clientFile.folderOrFile instanceof TFile))
+					continue;
 
 				const sanitizedFromPath = sanitizeRemotePath({
 					vaultRoot: this.settings.providerPath,
@@ -454,7 +458,7 @@ export class FileSync {
 				if (clientFileMetadata) this.fileMap?.delete(sanitizedFromPath);
 
 				this.fileMap?.set(sanitizedToPath, {
-					...(clientFile.folderOrFile as TFile),
+					...clientFile.folderOrFile,
 					remotePath: sanitizedToPath,
 					rev: clientFileMetadata?.rev,
 					fileHash: clientFileMetadata?.fileHash,
@@ -546,7 +550,7 @@ export class FileSync {
 
 		if (!folderOrFile) return;
 
-		await this.obsidianApp.vault.delete(folderOrFile, true);
+		await this.obsidianApp.fileManager.trashFile(folderOrFile);
 		this.fileMap.delete(args.providerDeleted.path);
 	}
 
