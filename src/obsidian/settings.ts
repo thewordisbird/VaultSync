@@ -98,18 +98,6 @@ export class SettingsTab extends PluginSettingTab {
 		// sub divs for the different app states this ensures the
 		// next setting will be formatted correctly. DRY
 		new Setting(disconnectedEl)
-			.setName("VaultSync")
-			.setDesc("Author: Justin Bird")
-			.addButton((button) => {
-				button.setButtonText("VaultSync on github");
-				button.onClick(() => {
-					window.location.href =
-						"https://www.github.com/thewordisbird/VaultSync";
-				});
-			})
-			.setHeading();
-
-		new Setting(disconnectedEl)
 			.setName("Provider")
 			.addDropdown((dropdown) => {
 				dropdown.addOption("dropbox", "dropbox");
@@ -156,17 +144,6 @@ export class SettingsTab extends PluginSettingTab {
 		// settings item will not have a top border. When using the
 		// sub divs for the different app states this ensures the
 		// next setting will be formatted correctly. DRY
-		new Setting(connectedEl)
-			.setName("VaultSync")
-			.setDesc("Author: Justin Bird")
-			.addButton((button) => {
-				button.setButtonText("VaultSync on github");
-				button.onClick(() => {
-					window.location.href =
-						"https://www.github.com/thewordisbird/VaultSync";
-				});
-			})
-			.setHeading();
 		new Setting(connectedEl)
 			.setName(
 				`Provider: ${this.plugin.settings.providerName?.toUpperCase()}`,
