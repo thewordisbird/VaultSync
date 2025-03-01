@@ -1,6 +1,6 @@
 {
 	"name": "VaultSync",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A plugin to link obsidian vault with cloud storage provider",
 	"main": "main.js",
 	"type": "module",
