@@ -26,7 +26,7 @@ Select a provider and click "Connect" to follow the authentication flow. Once co
 ### Selecting Your Provider Vault Path
 This is the remote folder that your local vault will be synced to.
 
-In the "Dropbox Vault Path" click "Select Vault" to select an existing provider hosted directory or create a new directory by clicking "Add folder" in the "Select vault" modal
+In the "Dropbox vault path" click "Select vault" to select an existing provider hosted directory or create a new directory by clicking "Add folder" in the "Select vault" modal
 
 After selecting a vault you should see the vault appear in the input field.
 <img width="1110" alt="Screenshot 2025-02-01 at 12 21 04 PM" src="https://github.com/user-attachments/assets/236b0fb6-77c5-4272-92c4-d6b2b25ec5b0" />

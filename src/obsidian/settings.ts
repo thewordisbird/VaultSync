@@ -167,7 +167,7 @@ export class SettingsTab extends PluginSettingTab {
 			});
 
 		new Setting(connectedEl)
-			.setName("Dropbox Vault Path")
+			.setName("Dropbox vault path")
 			.setDesc("Select a folder in your Dropbox to sync with Obsidian.")
 			.addText((text) =>
 				text
@@ -175,7 +175,7 @@ export class SettingsTab extends PluginSettingTab {
 					.setDisabled(true),
 			)
 			.addButton((button) =>
-				button.setButtonText("Select Vault").onClick(() => {
+				button.setButtonText("Select vault").onClick(() => {
 					new SelectVaultModal(this.app, this.plugin).open();
 				}),
 			)
