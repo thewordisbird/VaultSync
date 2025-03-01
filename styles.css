@@ -6,18 +6,6 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
-
-.modal {
-	position: absolute:
-	top: 80px;
-	overflow: hidden;
-	padding: var(--size-4-4) 0;
-}
-
-.modal-title {
-	padding: 0 var(--size-4-4);
-}
-
 .modal-breadcrumbs-container {
 	padding: 0 var(--size-4-4) var(--size-4-2) var(--size-4-4);
 	border-bottom: 1px solid var(--background-secondary);
